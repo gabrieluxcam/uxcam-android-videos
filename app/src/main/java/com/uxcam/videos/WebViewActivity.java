@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.uxcam.UXCam;
+
 public class WebViewActivity extends AppCompatActivity {
 
     @Override
@@ -18,6 +20,7 @@ public class WebViewActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
+//        UXCam.attachWebviewInterface(myWebView);  This will be after I add class class="uxcam-occlude" to code in html
         myWebView.loadUrl("https://gabmadera.com/");
     }
 }

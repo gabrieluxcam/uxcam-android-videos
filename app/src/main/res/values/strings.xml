@@ -9,4 +9,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="this_is_a_fragment">This is a Fragment</string>
     <string name="screen_b">Go To Screen B</string>
+    <string name="test_content">This should be a filler content</string>
+    <string name="screen_web">Go To WebView</string>
 </resources>

@@ -17,11 +17,11 @@
         android:hint="@string/edit_message"
         android:inputType="textPersonName"
         android:textColor="#161E35"
-        android:textColorLink="#161E35"
         android:textColorHint="#161E35"
+        android:textColorLink="#161E35"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.503" />
@@ -33,10 +33,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#161E35"
-        android:textColor="#F5F5F5"
         android:fontFamily="@font/roboto_medium"
         android:onClick="sendMessage"
         android:text="@string/button_send"
+        android:textColor="#F5F5F5"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -78,6 +78,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_main" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#161E35"
+        android:textColor="#F5F5F5"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/screen_web"
+        android:onClick="gotToWebview"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.8" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

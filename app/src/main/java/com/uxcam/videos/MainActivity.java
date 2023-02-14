@@ -24,36 +24,36 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        UXConfig config = new UXConfig.Builder("hyglikxvm5sozzv")
-//        UXConfig config = new UXConfig.Builder("91pv7ecadxyk3jp")
-//        UXConfig config = new UXConfig.Builder("vf2qndsanzf411b")
-                .enableAutomaticScreenNameTagging(true)
-                .enableImprovedScreenCapture(false)
-                .build();
-
-        UXCam.startWithConfiguration(config);
-//        new java.util.Timer().schedule(
-//                new java.util.TimerTask() {
-//                    @Override
-//                    public void run() {
-//                        UXCam.optOutOverall();
-//                    }
-//                },
-//                3000
-//        );
-
-
-        UXCam.addVerificationListener(new OnVerificationListener() {
-            @Override
-            public void onVerificationSuccess() {
-               UXCam.logEvent("UXCam.urlForCurrentSession()");
-            }
-
-            @Override
-            public void onVerificationFailed(String errorMessage) {
-            }
-
-        });
+//        UXConfig config = new UXConfig.Builder("hyglikxvm5sozzv")
+////        UXConfig config = new UXConfig.Builder("91pv7ecadxyk3jp")
+////        UXConfig config = new UXConfig.Builder("vf2qndsanzf411b")
+//                .enableAutomaticScreenNameTagging(true)
+//                .enableImprovedScreenCapture(false)
+//                .build();
+//
+//        UXCam.startWithConfiguration(config);
+////        new java.util.Timer().schedule(
+////                new java.util.TimerTask() {
+////                    @Override
+////                    public void run() {
+////                        UXCam.optOutOverall();
+////                    }
+////                },
+////                3000
+////        );
+//
+//
+//        UXCam.addVerificationListener(new OnVerificationListener() {
+//            @Override
+//            public void onVerificationSuccess() {
+//               UXCam.logEvent("UXCam.urlForCurrentSession()");
+//            }
+//
+//            @Override
+//            public void onVerificationFailed(String errorMessage) {
+//            }
+//
+//        });
 
 
 

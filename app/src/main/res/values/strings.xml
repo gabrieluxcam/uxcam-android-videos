@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">UXCam</string>
+    <string name="edit_message">Type Something</string>
+    <string name="button_send">Go To Screen A</string>
+    <string name="fragment_nav">View Fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello, I\'m a Fragment</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="this_is_a_fragment">This is a Fragment</string>
+    <string name="screen_b">Go To Screen B</string>
+</resources>

@@ -18,16 +18,16 @@ public class DisplayMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
 
-        String userID = "gabrielTest";
-        String academyId = "testProperty";
-
-        UXCam.setUserIdentity(String.valueOf(userID));
-        UXCam.setUserProperty("academy", academyId);
-        UXCam.optInOverall();
-
-        if (!UXCam.isRecording()) {
-            UXCam.startNewSession();
-        }
+//        String userID = "gabrielTest";
+//        String academyId = "testProperty";
+//
+//        UXCam.setUserIdentity(String.valueOf(userID));
+//        UXCam.setUserProperty("academy", academyId);
+//        UXCam.optInOverall();
+//
+//        if (!UXCam.isRecording()) {
+//            UXCam.startNewSession();
+//        }
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
@@ -42,7 +42,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // tag the screen here
-        UXCam.tagScreenName("test");
+//        UXCam.tagScreenName("test");
     }
 
     public void goToFragment(View view) {

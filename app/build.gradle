@@ -1,44 +1,299 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.uxcam.videos'
-    compileSdk 32
+    def keystoreProperties = new Properties()
+    def keystorePropertiesFile = rootProject.file('testKeyStore.jks')
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.uxcam.videos"
-        minSdk 21
-        targetSdk 32
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyAlias 'key0'
+            keyPassword 'v21015440'
+            storeFile file(keystorePropertiesFile)
+            storePassword 'v21015440'
         }
     }
-    compileOptions {
-
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
     }
+
     buildFeatures {
         viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    def fragment_version = "1.5.5"
+    def uxcam_version = "3.6.10"
+    def fragment_version = "1.6.0"
+    def compose_version = '1.4.2'
+//    def kotlin_version = '1.8.10'
+    def hilt_version = '2.44'
+    def espresso = '3.4.0'
+    def nav_version = '2.5.1'
+    def room_version = "2.4.2"
+    def constraintlayout_compose = '1.0.0'
+    def activity_compose = '1.4.0'
+    def coil_compose = '2.0.0'
+    def legacy_support = '1.0.0'
+    def appcompat = '1.4.2'
+    def android_cardview = '1.0.0'
+    def android_material = '1.6.1'
+    def multidex = '2.0.1'
+    def activity_ktx = '1.7.0'
+    def expandable_recyclerview = '2.1.1'
+    def constraintlayout = '2.1.4'
+    def constraintlayout_solver = '2.0.4'
+    def percentlayout = '1.0.0'
+    def moshi = '1.13.0'
+    def gson = '2.8.9'
+    def ormlite_android = '5.1'
+    def material_tab_strip = '1.1.0'
+    def universal_image_loader = '1.9.5'
+    def android_crop = '1.0.1@aar'
+    def annotation_api = '1.2'
+    def joda_time = '2.12.2'
+    def commons_lang3 = '3.5'
+    def jsoup = '1.15.3'
+    def services_auth = '20.3.0'
+    def event_bus = '3.0.0'
+    def okhttp = '4.10.0'
+    def droppy = '0.5.1@aar'
+    def android_agent = '6.2.1'
+    def retrofit = '2.6.0'
+    def coroutines_retrofit = '1.1.0'
+    def loggin_interceptor = '4.10.0'
+    def firebase_bom = '31.0.2'
+    def protobuf_javalite = '3.21.7'
+    def glide = '4.7.1'
+    def swiperefreshlayout = '1.1.0'
+    def lifecycle_extensions = '2.2.0'
+    def lifecycle_viewmodel = '2.4.1'
+    def navigation_compose = '1.0.0'
+    def shimmer = '0.5.0'
+    def uxcam_ktx = '1.2.10'
+    def android_lottie = '5.2.0'
+    def preference_ktx = '1.2.0'
+    def datastore_preferences = '1.0.0'
+    def timber = '5.0.1'
+    def accompanist_pager = '0.28.0'
 
-    implementation 'com.uxcam:uxcam:3.5.2'
-    implementation "androidx.fragment:fragment:$fragment_version"
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //tests
+    def mock_web_server = '4.10.0'
+    def json = '20220924'
+    def junit = '4.12'
+    def hamcrest_library = '2.2'
+    def coroutines_test = '1.5.2'
+    def truth = '1.0.1'
+    def mockito_core = '3.8.0'
+    def mockk = '1.12.3'
+    def test_annotation = '1.5.0'
+    def test_services = '1.4.1'
+    def orchestrator = '1.4.1'
+    def core_testing = '2.1.0'
+    def android_test_annotation = '1.0.0'
+    def androidx_test = '1.4.0'
+    def  ext_junit = '1.1.3'
+    def fragment_testing = '1.5.7'
+    def hilt_compiler = '1.0.0'
+    def mockito_android = '3.8.0'
+    def cash_turbine = '0.9.0'
+    def hilt_android_testing = '2.44'
+
+
+    implementation "com.uxcam:uxcam:$uxcam_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.9.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+
+    // Testing dependencies
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'androidx.compose.material3:material3:1.0.0-alpha08'
+    def composeBom = platform('androidx.compose:compose-bom:2023.01.00')
+    implementation composeBom
+    debugImplementation composeBom
+    androidTestImplementation composeBom
+    //Compose
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.material:material'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation 'androidx.compose.runtime:runtime-livedata'
+    implementation "androidx.constraintlayout:constraintlayout-compose:$constraintlayout_compose"
+    implementation "androidx.activity:activity-compose:$activity_compose"
+    implementation 'androidx.compose.material:material-icons-extended'
+
+    implementation "androidx.activity:activity-ktx:$activity_ktx"
+
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    //Coil
+    implementation "io.coil-kt:coil-compose:$coil_compose"
+
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support"
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation 'commons-io:commons-io:2.4'
+
+
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "androidx.cardview:cardview:$android_cardview"
+    implementation "com.google.android.material:material:$android_material"
+    implementation "androidx.multidex:multidex:$multidex"
+    implementation "com.bignerdranch.android:expandablerecyclerview:$expandable_recyclerview"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    implementation "androidx.constraintlayout:constraintlayout-solver:$constraintlayout_solver"
+    implementation "androidx.percentlayout:percentlayout:$percentlayout"
+
+    implementation "com.squareup.moshi:moshi:$moshi"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi"
+    implementation "com.google.code.gson:gson:$gson"
+    implementation "com.j256.ormlite:ormlite-android:$ormlite_android"
+    implementation "com.jpardogo.materialtabstrip:library:$material_tab_strip"
+    implementation "com.nostra13.universalimageloader:universal-image-loader:$universal_image_loader"
+    implementation "com.soundcloud.android:android-crop:$android_crop"
+    implementation "javax.annotation:javax.annotation-api:$annotation_api"
+
+    implementation "joda-time:joda-time:$joda_time"
+    implementation "org.apache.commons:commons-lang3:$commons_lang3"
+    implementation "org.jsoup:jsoup:$jsoup"
+    implementation "com.google.android.gms:play-services-auth:$services_auth"
+
+    implementation "org.greenrobot:eventbus:$event_bus"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+
+    implementation "com.shehabic.droppy:Droppy:$droppy"
+
+    implementation "com.newrelic.agent.android:android-agent:$android_agent"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "ru.gildor.coroutines:kotlin-coroutines-retrofit:$coroutines_retrofit"
+
+    //Logging Network Calls
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggin_interceptor"
+
+    implementation "com.github.bumptech.glide:glide:$glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide"
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_viewmodel"
+    implementation "androidx.hilt:hilt-navigation-compose:$navigation_compose"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_pager"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_pager"
+
+    implementation "com.facebook.shimmer:shimmer:$shimmer"
+
+    implementation "com.uxcam:uxcam-ktx:$uxcam_ktx"
+    implementation "com.airbnb.android:lottie:$android_lottie"
+
+//    //noinspection GradleDynamicVersion
+//    implementation group: 'sdk.pendo.io', name: 'pendoIO', version: '2.21.+', changing: true
+
+    implementation "androidx.preference:preference-ktx:$preference_ktx"
+    implementation "androidx.datastore:datastore-preferences:$datastore_preferences"
+
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    implementation "com.jakewharton.timber:timber:$timber"
+
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_web_server"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mock_web_server"
+    testImplementation "org.json:json:$json"
+
+    // Local Unit Tests
+    testImplementation "junit:junit:$junit"
+    testImplementation "org.hamcrest:hamcrest-library:$hamcrest_library"
+    testImplementation "androidx.arch.core:core-testing:$core_testing"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
+    testImplementation "com.google.truth:truth:$truth"
+    testImplementation "io.mockk:mockk:$mockk"
+    testImplementation "androidx.annotation:annotation:$test_annotation"
+
+    //Instrumented Unit Tests
+    androidTestImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit"
+    androidTestImplementation "androidx.test:core:$androidx_test"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test:runner:$androidx_test"
+    androidTestImplementation "androidx.test:rules:$androidx_test"
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espresso") {
+        exclude module: "protobuf-lite"
+    }
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espresso"
+    androidTestUtil "androidx.test:orchestrator:$orchestrator"
+    androidTestUtil "androidx.test.services:test-services:$test_services"
+
+    androidTestImplementation "androidx.annotation:annotation:$android_test_annotation"
+    androidTestImplementation "org.hamcrest:hamcrest-library:$hamcrest_library"
+
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_testing"
+    androidTestImplementation "androidx.fragment:fragment-ktx:$fragment_testing"
+    debugImplementation "androidx.test:monitor:1.6.1"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test"
+    androidTestImplementation "androidx.arch.core:core-testing:$core_testing"
+    androidTestImplementation "io.mockk:mockk-android:$mockk"
+
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_android_testing"
+    kaptTest "com.google.dagger:hilt-android-compiler:$hilt_android_testing"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_android_testing"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_android_testing"
+
+    testImplementation "app.cash.turbine:turbine:$cash_turbine"
+
+    constraints {
+        add("implementation", "com.google.protobuf:protobuf-javalite:$protobuf_javalite") {
+            because 'previous versions have a security issue'
+        }
+    }
 }

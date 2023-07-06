@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.uxcam.videos">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -53,7 +54,7 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="UXCamServerRegion"
-            android:value="production" />
+            android:value="PRODUCTION" />
     </application>
 
 </manifest>
